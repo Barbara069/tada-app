@@ -10,9 +10,13 @@ Built with a stunning Glassmorphism UI and a calming "Pink Dream" aesthetic, it 
 Key Features:
 
 🧩 Eisenhower Matrix: Visually prioritize tasks into Do First, Plan, Delegate, and Eliminate to beat decision paralysis.
+
 ⏱️ Integrated Focus Timers: Tasks come with built-in countdowns (Play/Pause/Reset) to facilitate time-blocking and prevent time blindness.
+
 💊 Daily Habits & Sleep Tracker: A "ghost-text" habit widget that lets you track hydration, workouts, and sleep goals with a smart countdown clock for bedtime.
+
 📝 Quick Scratchpad: A transparent, always-visible notepad for capturing fleeting thoughts before they vanish.
+
 💾 Auto-Save: Powered by localStorage, your data persists instantly across reloads—no login required.
 
 Tech Stack: HTML5, CSS3 (Variables, Grid, Flexbox), Vanilla JavaScript.
