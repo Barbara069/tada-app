@@ -2,6 +2,8 @@
 An ADHD-friendly dashboard designed to turn "To-Do" into "Ta-Da!" 🎉 
 Includes: ✅ Eisenhower Matrix ⏱️ Integrated Task Timers 💤 Sleep &amp; Habit Tracker 📝 Quick Scratchpad Built with HTML/CSS/JS. Turn your To-Do into Ta-Da!
 
+![Uploading image.png…]()
+
 ✨ Ta-Da List: A Dopamine-First Productivity Dashboard
 Ta-Da List is a task management dashboard designed specifically for ADHD brains, focusing on visual reward, reduced friction, and "tiny wins." Unlike standard to-do lists that feel like endless chores, this app transforms task completion into a celebration (Ta-Da! 🎉).
 
