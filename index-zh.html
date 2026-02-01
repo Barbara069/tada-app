@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  <head>
+    <title>ADHD 专注清单</title>
+        <link rel="icon" href="assets/icons/done-list.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="themes.css" />
+    <!-- Intro.js for Guided Tour -->
+    <link href="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/introjs.min.css" rel="stylesheet" />
+    <!-- Chinese Handwriting Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&family=ZCOOL+KuaiLe&family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <style>
+      /* Chinese handwriting font styles */
+      html[lang="zh-CN"] body {
+        font-family: 'ZCOOL XiaoWei', cursive, -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+      
+      html[lang="zh-CN"] .header-title,
+      html[lang="zh-CN"] h1, 
+      html[lang="zh-CN"] h2 {
+        font-family: 'ZCOOL KuaiLe', 'ZCOOL XiaoWei', cursive;
+        letter-spacing: 2px;
+      }
+      
+      html[lang="zh-CN"] .task-text,
+      html[lang="zh-CN"] .substep-text,
+      html[lang="zh-CN"] .quick-memo-item,
+      html[lang="zh-CN"] .habit-input {
+        font-family: 'ZCOOL XiaoWei', cursive;
+        font-size: 1.05em;
+      }
+      
+      html[lang="zh-CN"] button,
+      html[lang="zh-CN"] input::placeholder,
+      html[lang="zh-CN"] textarea::placeholder {
+        font-family: 'ZCOOL XiaoWei', cursive;
+      }
+      
+      html[lang="zh-CN"] .clock-greeting,
+      html[lang="zh-CN"] .greeting-text {
+        font-family: 'ZCOOL KuaiLe', cursive;
+        font-size: 1.15em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- create a container for the todo list -->
+    <div id="todo-container">
+        <!-- todo list header -->
+        <div id="app-header">
+            <button id="reset-all-btn" title="清除所有数据（任务、笔记、习惯）">↻</button>
+            <a href="index.html" class="lang-link" style="text-decoration: none; font-size: 18px; position: absolute; top: 0; right: 60px; z-index: 100;">🇺🇸</a>
+            <button id="tour-btn" title="开始引导">?</button>
+            <div id="theme-switcher">
+                <select id="theme-select">
+                        <option value="theme-morning-coffee">☕ 清晨咖啡</option>
+                        <option value="theme-deep-focus">🌙 深夜专注</option>
+                        <option value="theme-clean-slate">📄 极简白纸</option>
+                        <option value="theme-get-it-done">⚡ 雷厉风行</option>
+
+                        <option value="theme-sugar">🍭 糖果风暴</option>
+                        <option value="theme-holo">💿 千禧银灰</option>
+
+                        <option value="theme-salt">🌊 海盐冰蓝</option>
+                        <option value="theme-peach">🍑 蜜桃苏打</option>
+                        <option value="theme-mint">🥑 薄荷微风</option>
+                </select>
+            </div>
+            <div id="top-bar">
+                <h1 class="header-title">
+                    <img src="assets/icons/todo.svg" alt="待办清单">
+                </h1>
+            </div>
+            <div id="widget-bar">
+                <div id="quick-memo-pad" class="quick-memo">
+                    <div class="quick-memo-title">📝 随手记</div>
+                    <ol class="quick-memo-list">
+                        <li class="quick-memo-item" contenteditable="true" data-placeholder="在此输入笔记..."></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                    </ol>
+                </div>
+                <div id="clock-panel">
+                    <div id="current-time" aria-live="polite"></div>
+                    <div id="clock-greeting" class="greeting-text" aria-live="polite"></div>
+                </div>
+                <div id="daily-habits-widget" class="daily-habits">
+                    <div class="habits-title">📅 每日打卡</div>
+                    <ul class="habits-list">
+                        <li class="habit-item habit-sleep" data-habit-id="sleep-goal">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox" id="sleep-goal-check">
+                                <span>😴</span>
+                            </label>
+                            <input type="text" id="sleep-goal-input" class="habit-input sleep-input" placeholder="23:00">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-1">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="🍎 吃一个苹果...">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-2">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="💧 喝 8 杯水...">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-3">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="🏃 运动 15 分钟...">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- create input box -->
+        <div id="todo-form">
+            <input
+            type="text"
+            class="input-item"
+            name="input_box"
+            id="input-box"
+            placeholder="添加新任务..."
+            />
+            <!-- add button -->
+            <button id="input-button" onclick="addTask()">添加</button>
+        </div>
+
+        <!-- Three-column layout: matrix left, tasks center, timers right -->
+        <div id="main-content">
+            <!-- Left column: Eisenhower Matrix -->
+            <div id="matrix-column" class="eisenhower-matrix">
+                <h2>四象限视窗</h2>
+                <div id="matrix-view">
+                    <div class="matrix-grid">
+                        <div class="matrix-cell matrix-do-first" data-quadrant="do-first">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/rocket.png" alt="马上做">
+                                <span class="matrix-header-text">马上做</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-do-first"></div>
+                        </div>
+                        <div class="matrix-cell matrix-schedule" data-quadrant="schedule">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/diamond.png" alt="计划做">
+                                <span class="matrix-header-text">计划做</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-schedule"></div>
+                        </div>
+                        <div class="matrix-cell matrix-delegate" data-quadrant="delegate">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/lightning.png" alt="快速处理">
+                                <span class="matrix-header-text">快速处理</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-delegate"></div>
+                        </div>
+                        <div class="matrix-cell matrix-eliminate" data-quadrant="eliminate">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/latte.png" alt="稍后做">
+                                <span class="matrix-header-text">稍后做</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-eliminate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center column: task list -->
+            <div id="tasks-column">
+                <h2>📋 任务列表</h2>
+                <ul id="list-container"></ul>
+            </div>
+            
+        </div>
+
+        <hr />
+        <!-- task list counter -->
+        <div class="counter-container">
+            <div id="task-counters">
+                已完成: <span id="completed-counter">0</span> | 未完成:
+                <span id="uncompleted-counter">0</span>
+            </div>
+        </div>
+
+    </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js"></script>
+          <script type="text/javascript" src="script.js"></script>
+  </body>
+
+</html>

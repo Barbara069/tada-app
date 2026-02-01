@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <title>ADHD To-Do List</title>
+        <link rel="icon" href="assets/icons/done-list.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="themes.css" />
+    <!-- Intro.js for Guided Tour -->
+    <link href="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/introjs.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- create a container for the todo list -->
+    <div id="todo-container">
+        <!-- todo list header -->
+        <div id="app-header">
+            <button id="reset-all-btn" title="Clear all data (tasks, notes, habits)">↻</button>
+            <a href="index-zh.html" class="lang-link" style="text-decoration: none; font-size: 18px; position: absolute; top: 0; right: 60px; z-index: 100;">🇨🇳</a>
+            <button id="tour-btn" title="Start guided tour">?</button>
+            <div id="theme-switcher">
+                <select id="theme-select">
+                        <option value="theme-morning-coffee">☕ Morning Coffee</option>
+                        <option value="theme-deep-focus">🌙 Deep Focus</option>
+                        <option value="theme-clean-slate">📄 Clean Slate</option>
+                        <option value="theme-get-it-done">⚡ Get It Done</option>
+
+                        <option value="theme-sugar">🍭 Sugar Rush</option>
+                        <option value="theme-holo">💿 Holo Y2K</option>
+
+                        <option value="theme-salt">🌊 Sea Salt Blue</option>
+                        <option value="theme-peach">🍑 Peach Soda</option>
+                        <option value="theme-mint">🥑 Mint Breeze</option>
+                </select>
+            </div>
+            <div id="top-bar">
+                <h1 class="header-title">
+                    <img src="assets/icons/todo.svg" alt="To Do List">
+                </h1>
+            </div>
+            <div id="widget-bar">
+                <div id="quick-memo-pad" class="quick-memo">
+                    <div class="quick-memo-title">Quick Note</div>
+                    <ol class="quick-memo-list">
+                        <li class="quick-memo-item" contenteditable="true" data-placeholder="Quick notes..."></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                        <li class="quick-memo-item" contenteditable="true"></li>
+                    </ol>
+                </div>
+                <div id="clock-panel">
+                    <div id="current-time" aria-live="polite"></div>
+                    <div id="clock-greeting" class="greeting-text" aria-live="polite"></div>
+                </div>
+                <div id="daily-habits-widget" class="daily-habits">
+                    <div class="habits-title">Daily Habits</div>
+                    <ul class="habits-list">
+                        <li class="habit-item habit-sleep" data-habit-id="sleep-goal">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox" id="sleep-goal-check">
+                                <span>😴</span>
+                            </label>
+                            <input type="text" id="sleep-goal-input" class="habit-input sleep-input" placeholder="11 PM">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-1">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="🍎 Eat an apple...">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-2">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="💧 8 cups water...">
+                        </li>
+                        <li class="habit-item" data-habit-id="habit-3">
+                            <label>
+                                <input type="checkbox" class="habit-checkbox">
+                            </label>
+                            <input type="text" class="habit-input" placeholder="🏃 15 min workout...">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- create input box -->
+        <div id="todo-form">
+            <input
+            type="text"
+            class="input-item"
+            name="input_box"
+            id="input-box"
+            placeholder="Add Task"
+            />
+            <!-- add button -->
+            <button id="input-button" onclick="addTask()">Add</button>
+        </div>
+
+        <!-- Three-column layout: matrix left, tasks center, timers right -->
+        <div id="main-content">
+            <!-- Left column: Eisenhower Matrix -->
+            <div id="matrix-column" class="eisenhower-matrix">
+                <h2>Eisenhower Matrix</h2>
+                <div id="matrix-view">
+                    <div class="matrix-grid">
+                        <div class="matrix-cell matrix-do-first" data-quadrant="do-first">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/rocket.png" alt="Do Now">
+                                <span class="matrix-header-text">Do First</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-do-first"></div>
+                        </div>
+                        <div class="matrix-cell matrix-schedule" data-quadrant="schedule">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/diamond.png" alt="Plan">
+                                <span class="matrix-header-text">Plan It</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-schedule"></div>
+                        </div>
+                        <div class="matrix-cell matrix-delegate" data-quadrant="delegate">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/lightning.png" alt="Fast-Track">
+                                <span class="matrix-header-text">Fast-Track</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-delegate"></div>
+                        </div>
+                        <div class="matrix-cell matrix-eliminate" data-quadrant="eliminate">
+                            <div class="matrix-cell-header">
+                                <img class="matrix-header-icon" src="assets/icons/latte.png" alt="Later">
+                                <span class="matrix-header-text">Do Later</span>
+                            </div>
+                            <div class="matrix-cell-body" id="matrix-eliminate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center column: task list -->
+            <div id="tasks-column">
+                <h2>Task List</h2>
+                <ul id="list-container"></ul>
+            </div>
+            
+        </div>
+
+        <hr />
+        <!-- task list counter -->
+        <div class="counter-container">
+            <div id="task-counters">
+                Completed: <span id="completed-counter">0</span> | Uncompleted:
+                <span id="uncompleted-counter">0</span>
+            </div>
+        </div>
+
+    </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/intro.js@7.2.0/intro.min.js"></script>
+          <script type="text/javascript" src="script.js"></script>
+  </body>
+
+</html>

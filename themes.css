@@ -1,0 +1,1017 @@
+/*
+  themes.css - Professional Theme System for TODO App
+  
+  6 Carefully Crafted Themes:
+    1. Morning Coffee - Warm & Organic (Default)
+    2. Deep Focus - Dark Mode Cyberpunk
+    3. Clean Slate - Minimalist SaaS  
+    4. Get It Done - High Energy Pop
+    5. Zen Garden - Monochromatic Green
+    6. Pink Dream - Soft Pink Glass
+*/
+
+/* ============================================
+   CSS VARIABLES FOR THEMES
+   ============================================ */
+
+/* THEME 1: Morning Coffee (Warm & Organic) - DEFAULT */
+.theme-morning-coffee,
+body:not([class*="theme-"]) {
+  --bg-primary: #FDFCF0;
+  --bg-secondary: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F5F2E8;
+  --text-primary: #4A4A4A;
+  --text-secondary: #6B6B6B;
+  --text-muted: #9B9B9B;
+  --accent-primary: #E07A5F;
+  --accent-secondary: #81B29A;
+  --border-color: #D6D6D6;
+  --shadow: rgba(74, 74, 74, 0.08);
+  --shadow-hover: rgba(74, 74, 74, 0.15);
+  --success: #81B29A;
+  --warning: #F4A261;
+  --danger: #E07A5F;
+  --completed-opacity: 0.5;
+  --input-bg: #FFFFFF;
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #E07A5F;
+  --matrix-do-first-bg: rgba(224, 122, 95, 0.15);
+  --matrix-schedule-bg: rgba(129, 178, 154, 0.15);
+  --matrix-delegate-bg: rgba(244, 162, 97, 0.15);
+  --matrix-eliminate-bg: rgba(155, 155, 155, 0.15);
+  --matrix-do-first-text: #C1563F;
+  --matrix-schedule-text: #2F7D5C;
+  --matrix-delegate-text: #C87A2C;
+  --matrix-eliminate-text: #666666;
+  --sleep-countdown-color: #2F7D5C;
+  --sleep-countdown-bg: rgba(129, 178, 154, 0.15);
+  --sleep-reminder-color: #C1563F;
+  --sleep-reminder-bg: rgba(224, 122, 95, 0.18);
+}
+
+  /* Theme-aware text colors */
+  body {
+    color: var(--text-primary) !important;
+  }
+
+  h1, h2 {
+    color: var(--text-primary) !important;
+  }
+
+  .task-text,
+  .substep-text,
+  .task-desc,
+  .task-edit-input,
+  .matrix-cell-header,
+  .matrix-task-title,
+  .timer-card-title {
+    color: var(--text-primary) !important;
+  }
+
+  .task-desc::placeholder,
+  .task-edit-input::placeholder {
+    color: var(--text-muted) !important;
+  }
+
+/* THEME 2: Deep Focus (Dark Mode) */
+.theme-deep-focus {
+  --bg-primary: #1E1E2E;
+  --bg-secondary: #252538;
+  --bg-card: #2A2A3E;
+  --bg-hover: #33334D;
+  --text-primary: #CDD6F4;
+  --text-secondary: #BAC2DE;
+  --text-muted: #9399B2;
+  --accent-primary: #CBA6F7;
+  --accent-secondary: #89B4FA;
+  --border-color: #3E3E52;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-hover: rgba(0, 0, 0, 0.6);
+  --success: #A6E3A1;
+  --warning: #F9E2AF;
+  --danger: #F38BA8;
+  --completed-opacity: 0.4;
+  --input-bg: #252538;
+  --button-text: #1E1E2E;
+  --icon-filter: brightness(1.6) saturate(1.2);
+  --habit-checkbox-accent: #CBA6F7;
+  --matrix-do-first-bg: rgba(243, 139, 168, 0.15);
+  --matrix-schedule-bg: rgba(137, 180, 250, 0.15);
+  --matrix-delegate-bg: rgba(203, 166, 247, 0.15);
+  --matrix-eliminate-bg: rgba(147, 153, 178, 0.15);
+  --matrix-do-first-text: #F38BA8;
+  --matrix-schedule-text: #89B4FA;
+  --matrix-delegate-text: #CBA6F7;
+  --matrix-eliminate-text: #9399B2;
+  --sleep-countdown-color: #A6E3A1;
+  --sleep-countdown-bg: rgba(166, 227, 161, 0.15);
+  --sleep-reminder-color: #F38BA8;
+  --sleep-reminder-bg: rgba(243, 139, 168, 0.18);
+}
+
+/* THEME 3: Clean Slate (Minimalist SaaS) */
+.theme-clean-slate {
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F9FAFB;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F3F4F6;
+  --text-primary: #111827;
+  --text-secondary: #374151;
+  --text-muted: #6B7280;
+  --accent-primary: #2563EB;
+  --accent-secondary: #3B82F6;
+  --border-color: #E5E7EB;
+  --shadow: rgba(17, 24, 39, 0.05);
+  --shadow-hover: rgba(17, 24, 39, 0.1);
+  --success: #10B981;
+  --warning: #F59E0B;
+  --danger: #EF4444;
+  --completed-opacity: 0.45;
+  --input-bg: #FFFFFF;
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #2563EB;
+  --matrix-do-first-bg: rgba(239, 68, 68, 0.12);
+  --matrix-schedule-bg: rgba(37, 99, 235, 0.12);
+  --matrix-delegate-bg: rgba(245, 158, 11, 0.12);
+  --matrix-eliminate-bg: rgba(107, 114, 128, 0.12);
+  --matrix-do-first-text: #DC2626;
+  --matrix-schedule-text: #1D4ED8;
+  --matrix-delegate-text: #D97706;
+  --matrix-eliminate-text: #4B5563;
+  --sleep-countdown-color: #059669;
+  --sleep-countdown-bg: rgba(16, 185, 129, 0.12);
+  --sleep-reminder-color: #DC2626;
+  --sleep-reminder-bg: rgba(239, 68, 68, 0.12);
+}
+
+/* THEME 4: Get It Done (High Energy Pop) */
+.theme-get-it-done {
+  --bg-primary: #b5b0aa;
+  --bg-secondary: #aca5a5;
+  --bg-card: #FFFFFF;
+  --bg-hover: #e5e5ee;
+  --text-primary: #09090B;
+  --text-secondary: #27272A;
+  --text-muted: #71717A;
+  --accent-primary: #FFE600;
+  --accent-secondary: #000000;
+  --border-color: #D4D4D8;
+  --shadow: rgba(9, 9, 11, 0.12);
+  --shadow-hover: rgba(87, 87, 99, 0.2);
+  --success: #00D26A;
+  --warning: #FF9500;
+  --danger: #FF3B30;
+  --completed-opacity: 0.35;
+  --input-bg: #FFFFFF;
+  --button-text: #09090B;
+  --icon-filter: none;
+  --habit-checkbox-accent: #FFE600;
+  --matrix-do-first-bg: rgba(255, 59, 48, 0.15);
+  --matrix-schedule-bg: rgba(255, 149, 0, 0.15);
+  --matrix-delegate-bg: rgba(255, 230, 0, 0.15);
+  --matrix-eliminate-bg: rgba(0, 210, 106, 0.15);
+  --matrix-do-first-text: #E31E24;
+  --matrix-schedule-text: #FF9500;
+  --matrix-delegate-text: #FFC400;
+  --matrix-eliminate-text: #00AA00;
+  --sleep-countdown-color: #00D26A;
+  --sleep-countdown-bg: rgba(0, 210, 106, 0.15);
+  --sleep-reminder-color: #FF3B30;
+  --sleep-reminder-bg: rgba(255, 59, 48, 0.15);
+}
+
+/* ============================================
+   APPLY THEME VARIABLES TO ELEMENTS
+   ============================================ */
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+#todo-container {
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  box-shadow: 0 8px 32px var(--shadow);
+}
+
+#todo-container:hover {
+  box-shadow: 0 12px 40px var(--shadow-hover);
+}
+
+h1, h2 {
+  color: var(--text-primary);
+}
+
+/* Theme Switcher */
+#theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+#theme-switcher label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+#theme-select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#theme-select:hover {
+  border-color: var(--accent-primary);
+}
+
+#theme-select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--shadow);
+}
+
+/* Task Items */
+li {
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border-color) !important;
+  box-shadow: 0 4px 15px var(--shadow) !important;
+  color: var(--text-primary) !important;
+}
+
+li:hover {
+  background: var(--bg-hover) !important;
+  box-shadow: 0 6px 20px var(--shadow-hover) !important;
+}
+
+.completed {
+  opacity: var(--completed-opacity) !important;
+}
+
+.task-text, .substep-text {
+  color: var(--text-primary) !important;
+}
+
+/* Inputs */
+#input-box, .eta-input, .substep-eta-input, .deadline-input, .task-edit-input {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1.5px solid var(--border-color) !important;
+}
+
+#input-box:focus, .eta-input:focus, .deadline-input:focus, .task-edit-input:focus {
+  border-color: var(--accent-primary) !important;
+  box-shadow: 0 0 0 3px var(--shadow) !important;
+}
+
+#input-box::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Buttons */
+#input-button {
+  background: var(--accent-primary) !important;
+  color: var(--button-text) !important;
+  border: none !important;
+}
+
+.theme-get-it-done #input-button {
+  background: var(--accent-secondary) !important;
+  color: #FFFFFF !important;
+}
+
+#input-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+#sort-button, #sort-deadline-button {
+  background: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  border: 1.5px solid var(--border-color) !important;
+}
+
+#sort-button:hover, #sort-deadline-button:hover {
+  background: var(--bg-hover) !important;
+  border-color: var(--accent-primary) !important;
+}
+
+/* Priority Colors */
+.priority-high {
+  border-left: 5px solid var(--danger) !important;
+}
+
+.priority-medium {
+  border-left: 5px solid var(--warning) !important;
+}
+
+.priority-low {
+  border-left: 5px solid var(--success) !important;
+}
+
+/* Delete Button */
+.delete-btn, .delete-substep-btn {
+  color: var(--danger) !important;
+}
+
+.delete-btn:hover, .delete-substep-btn:hover {
+  background: var(--danger) !important;
+  color: var(--bg-card) !important;
+}
+
+/* Collapse Button */
+.collapse-btn {
+  color: var(--accent-secondary) !important;
+}
+
+.collapse-btn:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* Checkboxes */
+.task-checkbox, .substep-checkbox {
+  accent-color: var(--accent-primary) !important;
+}
+
+/* Priority & ETA Selectors */
+.priority-select, #priority-select {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.priority-select:hover, #priority-select:hover {
+  border-color: var(--accent-primary) !important;
+}
+
+/* Effort selector and badge */
+.effort-select {
+  background: var(--bg-card) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.effort-select:hover {
+  border-color: var(--accent-primary) !important;
+}
+
+.effort-badge {
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 6px var(--shadow) !important;
+}
+
+.effort-badge.effort-low {
+  background: var(--warning) !important;
+  color: #5a3e00 !important;
+}
+
+.effort-badge.effort-high {
+  background: var(--accent-secondary) !important;
+  color: var(--button-text) !important;
+}
+
+/* Deep Focus theme: effort-low text override for better contrast */
+.theme-deep-focus .effort-badge.effort-low {
+  color: #3d2500 !important;
+}
+
+/* Substeps Section */
+.substeps {
+  background: var(--bg-hover) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.substep {
+  background: var(--bg-card) !important;
+  border: none !important;
+}
+
+.substep:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* Timer Display */
+.timer-display {
+  background: var(--bg-hover) !important;
+  color: var(--text-primary) !important;
+}
+
+/* Timer Buttons */
+.timer-start-btn, .timer-pause-btn, .timer-reset-btn {
+  background: var(--bg-card) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.timer-start-btn:hover, .timer-pause-btn:hover, .timer-reset-btn:hover {
+  background: var(--bg-hover) !important;
+}
+
+.timer-card .timer-start-btn {
+  background: var(--success) !important;
+  color: var(--button-text) !important;
+  border-color: var(--success) !important;
+}
+
+.timer-card .timer-pause-btn {
+  background: var(--warning) !important;
+  color: var(--button-text) !important;
+  border-color: var(--warning) !important;
+}
+
+.timer-card .timer-reset-btn {
+  background: var(--danger) !important;
+  color: var(--button-text) !important;
+  border-color: var(--danger) !important;
+}
+
+/* Timer Cards */
+.timer-card {
+  background: var(--bg-card) !important;
+  border: 1.5px solid var(--border-color) !important;
+}
+
+.timer-card-title {
+  color: var(--text-primary) !important;
+}
+
+.timer-status {
+  background: var(--success) !important;
+  color: var(--button-text) !important;
+}
+
+.timer-completed {
+  border: 1.5px solid var(--success) !important;
+  box-shadow: 0 0 12px var(--shadow) !important;
+}
+
+#timers-column {
+  background: var(--bg-hover) !important;
+}
+
+/* Task Description */
+.task-desc {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.task-desc:focus {
+  border-color: var(--accent-primary) !important;
+}
+
+/* Progress Bar */
+.progress-container {
+  background: var(--bg-hover) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary)) !important;
+}
+
+.progress-percent {
+  color: var(--text-primary) !important;
+  text-shadow: 0 1px 2px var(--shadow);
+}
+
+/* Substep Summary */
+.substep-summary {
+  background: var(--bg-hover) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* ETA & Deadline Display */
+.eta-display, .substep-eta-display {
+  color: var(--accent-secondary) !important;
+}
+
+.deadline-display {
+  color: var(--text-muted) !important;
+}
+
+.has-deadline .deadline-display {
+  color: var(--danger) !important;
+}
+
+/* Deadline Countdown - ensure readable across themes */
+.deadline-countdown {
+  color: var(--text-primary) !important;
+}
+
+.deadline-countdown.safe {
+  color: #2f6b3a !important;
+  background: linear-gradient(135deg, rgba(220, 245, 225, 0.8), rgba(200, 240, 210, 0.8)) !important;
+}
+
+.deadline-countdown.warning {
+  color: #6b5600 !important;
+  background: linear-gradient(135deg, rgba(248, 240, 210, 0.65), rgba(240, 230, 200, 0.65)) !important;
+}
+
+.deadline-countdown.urgent {
+  color: #7a5a00 !important;
+  background: linear-gradient(135deg, rgba(255, 241, 178, 0.6), rgba(255, 224, 140, 0.6)) !important;
+}
+
+.deadline-countdown.critical {
+  color: #7a4a00 !important;
+  background: linear-gradient(135deg, rgba(255, 230, 168, 0.6), rgba(255, 204, 128, 0.6)) !important;
+}
+
+.deadline-countdown.overdue {
+  color: #7a3e00 !important;
+  background: linear-gradient(135deg, rgba(255, 216, 168, 0.55), rgba(255, 178, 107, 0.55)) !important;
+}
+
+/* Counters */
+#task-counters {
+  color: var(--text-secondary) !important;
+}
+
+/* Clock */
+#current-time {
+  color: var(--text-primary) !important;
+  text-shadow: 0 0 10px var(--accent-primary) !important;
+  background: var(--bg-hover) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+#sleep-countdown {
+  color: var(--sleep-countdown-color) !important;
+  background: var(--sleep-countdown-bg) !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+#sleep-reminder {
+  color: var(--sleep-reminder-color) !important;
+  background: var(--sleep-reminder-bg) !important;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* Substep Input */
+.substep-input {
+  background: var(--input-bg) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.substep-input:focus {
+  border-color: var(--accent-primary) !important;
+}
+
+.substep-input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+.task-desc::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Add Step Button */
+.add-substep-btn {
+  background: var(--accent-secondary) !important;
+  color: var(--button-text) !important;
+  border: none !important;
+}
+
+.add-substep-btn:hover {
+  opacity: 0.9;
+}
+
+/* Get It Done: fix low-contrast text on dark buttons/badges */
+.theme-get-it-done .add-substep-btn,
+.theme-get-it-done .effort-badge.effort-high,
+.theme-get-it-done .timer-card .timer-start-btn,
+.theme-get-it-done .timer-card .timer-pause-btn,
+.theme-get-it-done .timer-card .timer-reset-btn,
+.theme-get-it-done .timer-status {
+  color: #FFFFFF !important;
+}
+
+/* ============================================
+   HABIT CHECKBOX STYLING
+   ============================================ */
+
+.habit-checkbox {
+  accent-color: var(--habit-checkbox-accent) !important;
+  cursor: pointer;
+}
+
+/* ============================================
+   EISENHOWER MATRIX STYLING
+   ============================================ */
+
+.matrix-do-first {
+  background: var(--matrix-do-first-bg);
+}
+
+.matrix-schedule {
+  background: var(--matrix-schedule-bg);
+}
+
+.matrix-delegate {
+  background: var(--matrix-delegate-bg);
+}
+
+.matrix-eliminate {
+  background: var(--matrix-eliminate-bg);
+}
+
+/* ============================================
+   NEW THEMES (TRANSPARENT / GLASS)
+   ============================================ */
+
+/* THEME 7: Sugar Rush (Glass) */
+.theme-sugar {
+  --bg-primary: linear-gradient(135deg, #FF9A9E 0%, #FECFEF 99%, #a18cd1 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.35); /* Clear Glass */
+  --bg-card: rgba(255, 255, 255, 0.55);      /* Frosted Task */
+  --bg-hover: rgba(255, 255, 255, 0.75);
+  --text-primary: #6a1b9a;
+  --text-secondary: #8e24aa;
+  --text-muted: #ba68c8;
+  --accent-primary: #00d2ff;
+  --accent-secondary: #ff4081;
+  --border-color: rgba(255, 255, 255, 0.6);
+  --shadow: rgba(106, 27, 154, 0.1);
+  --shadow-hover: rgba(106, 27, 154, 0.2);
+  --success: #00e676;
+  --warning: #ffea00;
+  --danger: #ff1744;
+  --completed-opacity: 0.5;
+  --input-bg: rgba(255, 255, 255, 0.5); /* Semi-transparent Input */
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #ff4081;  --matrix-do-first-bg: rgba(255, 82, 82, 0.15);
+  --matrix-schedule-bg: rgba(255, 128, 171, 0.15);
+  --matrix-delegate-bg: rgba(255, 202, 40, 0.15);
+  --matrix-eliminate-bg: rgba(156, 204, 101, 0.15);  --matrix-do-first-bg: rgba(255, 23, 68, 0.15);
+  --matrix-schedule-bg: rgba(0, 210, 255, 0.15);
+  --matrix-delegate-bg: rgba(255, 64, 129, 0.15);
+  --matrix-eliminate-bg: rgba(0, 230, 118, 0.15);
+  --sleep-countdown-color: #00d2ff;
+  --sleep-countdown-bg: rgba(0, 210, 255, 0.15);
+  --sleep-reminder-color: #ff4081;
+  --sleep-reminder-bg: rgba(255, 64, 129, 0.2);
+}
+
+/* THEME 8: Holo Y2K (Iridescent Glass) */
+.theme-holo {
+  --bg-primary: linear-gradient(135deg, #e0e0e0 0%, #f3f3f3 50%, #d7d7d7 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.25); /* Very Clear Glass */
+  --bg-card: rgba(255, 255, 255, 0.45);
+  --bg-hover: rgba(255, 255, 255, 0.7);
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-muted: #888888;
+  --accent-primary: #ff00cc;
+  --accent-secondary: #00ccff;
+  --border-color: rgba(255, 255, 255, 0.8);
+  --shadow: rgba(0, 0, 0, 0.05);
+  --shadow-hover: rgba(255, 0, 204, 0.15);
+  --success: #00b894;
+  --warning: #fdcb6e;
+  --danger: #ff7675;
+  --completed-opacity: 0.5;
+  --input-bg: rgba(255, 255, 255, 0.4);
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #ff00cc;
+  --matrix-do-first-bg: rgba(255, 118, 117, 0.15);
+  --matrix-schedule-bg: rgba(0, 204, 255, 0.15);
+  --matrix-delegate-bg: rgba(255, 0, 204, 0.15);
+  --matrix-eliminate-bg: rgba(0, 184, 148, 0.15);
+  --matrix-do-first-text: #FF3333;
+  --matrix-schedule-text: #0099FF;
+  --matrix-delegate-text: #FF00CC;
+  --matrix-eliminate-text: #00AA77;
+  --sleep-countdown-color: #00b894;
+  --sleep-countdown-bg: rgba(0, 184, 148, 0.15);
+  --sleep-reminder-color: #ff7675;
+  --sleep-reminder-bg: rgba(255, 118, 117, 0.15);
+}
+
+/* THEME 10: Sea Salt Blue (Frosted Glass) */
+.theme-salt {
+  --bg-primary: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.3); /* Airy Container */
+  --bg-card: rgba(255, 255, 255, 0.5);      /* Airy Task */
+  --bg-hover: rgba(255, 255, 255, 0.8);
+  --text-primary: #1565c0;
+  --text-secondary: #42a5f5;
+  --text-muted: #90caf9;
+  --accent-primary: #29b6f6;
+  --accent-secondary: #81d4fa;
+  --border-color: rgba(255, 255, 255, 0.6);
+  --shadow: rgba(33, 150, 243, 0.1);
+  --shadow-hover: rgba(33, 150, 243, 0.2);
+  --success: #66bb6a;
+  --warning: #ffca28;
+  --danger: #ef5350;
+  --completed-opacity: 0.6;
+  --input-bg: rgba(255, 255, 255, 0.4);
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #29b6f6;
+  --matrix-do-first-bg: rgba(239, 83, 80, 0.15);
+  --matrix-schedule-bg: rgba(41, 182, 246, 0.15);
+  --matrix-delegate-bg: rgba(255, 202, 40, 0.15);
+  --matrix-eliminate-bg: rgba(102, 187, 106, 0.15);
+  --matrix-do-first-text: #D32F2F;
+  --matrix-schedule-text: #0D7AFF;
+  --matrix-delegate-text: #FF9800;
+  --matrix-eliminate-text: #388E3C;
+  --sleep-countdown-color: #29b6f6;
+  --sleep-countdown-bg: rgba(41, 182, 246, 0.15);
+  --sleep-reminder-color: #ef5350;
+  --sleep-reminder-bg: rgba(239, 83, 80, 0.12);
+}
+
+/* THEME 11: Peach Soda (Soft Glass) */
+.theme-peach {
+  --bg-primary: linear-gradient(to top, #b77d77  0%, #eac3bf 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.3);
+  --bg-card: rgba(252, 250, 250, 0.511);
+  --bg-hover: rgba(237, 224, 230, 0.313);
+  --text-primary: #070101;
+  --text-secondary: #cb4370;
+  --text-muted: #daa0b3d8;
+  --accent-primary: #ff80ab;
+  --accent-secondary: #ff4081;
+  --border-color: rgba(255, 255, 255, 0.6);
+  --shadow: rgba(233, 30, 99, 0.1);
+  --shadow-hover: rgba(233, 30, 99, 0.2);
+  --success: #9ccc65;
+  --warning: #ffca28;
+  --danger: #ff5252;
+  --completed-opacity: 0.6;
+  --input-bg: rgba(255, 255, 255, 0.4);
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #e49cb4c4;
+  --sleep-countdown-color: #cb6f8f;
+  --sleep-countdown-bg: rgba(203, 111, 143, 0.15);
+  --sleep-reminder-color: #ff5252;
+  --sleep-reminder-bg: rgba(255, 82, 82, 0.12);
+}
+
+/* THEME 12: Mint Breeze (Nature Glass) */
+.theme-mint {
+  --bg-primary: linear-gradient(120deg, #46319a 0%, #96e6a1 100%);
+  --bg-secondary: rgba(255, 255, 255, 0.35);
+  --bg-card: rgba(255, 255, 255, 0.55);
+  --bg-hover: rgba(255, 255, 255, 0.85);
+  --text-primary: #2e7d32;
+  --text-secondary: #43a047;
+  --text-muted: #a5d6a7;
+  --accent-primary: #00e676;
+  --accent-secondary: #66bb6a;
+  --border-color: rgba(255, 255, 255, 0.7);
+  --shadow: rgba(76, 175, 80, 0.1);
+  --shadow-hover: rgba(76, 175, 80, 0.2);
+  --success: #43a047;
+  --warning: #ffa000;
+  --danger: #d32f2f;
+  --completed-opacity: 0.6;
+  --input-bg: rgba(255, 255, 255, 0.45);
+  --button-text: #FFFFFF;
+  --icon-filter: none;
+  --habit-checkbox-accent: #00e676;
+  --matrix-do-first-bg: rgba(211, 47, 47, 0.15);
+  --matrix-schedule-bg: rgba(0, 230, 118, 0.15);
+  --matrix-delegate-bg: rgba(255, 160, 0, 0.15);
+  --matrix-eliminate-bg: rgba(67, 160, 71, 0.15);
+  --matrix-do-first-text: #C62828;
+  --matrix-schedule-text: #00AA44;
+  --matrix-delegate-text: #FF6F00;
+  --matrix-eliminate-text: #2E7D32;
+  --sleep-countdown-color: #43a047;
+  --sleep-countdown-bg: rgba(67, 160, 71, 0.15);
+  --sleep-reminder-color: #d32f2f;
+  --sleep-reminder-bg: rgba(211, 47, 47, 0.12);
+}
+
+/* ============================================
+   THEME-SPECIFIC SLEEP ELEMENT STYLING
+   ============================================ */
+
+/* Morning Coffee Theme */
+.theme-morning-coffee #sleep-countdown,
+body:not([class*="theme-"]) #sleep-countdown {
+  color: #2F7D5C !important;
+  background: rgba(129, 178, 154, 0.15) !important;
+}
+
+.theme-morning-coffee #sleep-reminder,
+body:not([class*="theme-"]) #sleep-reminder {
+  color: #C1563F !important;
+  background: rgba(224, 122, 95, 0.18) !important;
+}
+
+/* Deep Focus Theme */
+.theme-deep-focus #sleep-countdown {
+  color: #A6E3A1 !important;
+  background: rgba(166, 227, 161, 0.15) !important;
+}
+
+.theme-deep-focus #sleep-reminder {
+  color: #F38BA8 !important;
+  background: rgba(243, 139, 168, 0.18) !important;
+}
+
+/* Clean Slate Theme */
+.theme-clean-slate #sleep-countdown {
+  color: #059669 !important;
+  background: rgba(16, 185, 129, 0.12) !important;
+}
+
+.theme-clean-slate #sleep-reminder {
+  color: #DC2626 !important;
+  background: rgba(239, 68, 68, 0.12) !important;
+}
+
+/* Get It Done Theme */
+.theme-get-it-done #sleep-countdown {
+  color: #00D26A !important;
+  background: rgba(0, 210, 106, 0.15) !important;
+}
+
+.theme-get-it-done #sleep-reminder {
+  color: #FF3B30 !important;
+  background: rgba(255, 59, 48, 0.15) !important;
+}
+
+/* Sugar Rush Theme */
+.theme-sugar #sleep-countdown {
+  color: #00d2ff !important;
+  background: rgba(0, 210, 255, 0.15) !important;
+}
+
+.theme-sugar #sleep-reminder {
+  color: #ff4081 !important;
+  background: rgba(255, 64, 129, 0.2) !important;
+}
+
+/* Holo Y2K Theme */
+.theme-holo #sleep-countdown {
+  color: #00b894 !important;
+  background: rgba(0, 184, 148, 0.15) !important;
+}
+
+.theme-holo #sleep-reminder {
+  color: #ff7675 !important;
+  background: rgba(255, 118, 117, 0.15) !important;
+}
+
+/* Sea Salt Blue Theme */
+.theme-salt #sleep-countdown {
+  color: #29b6f6 !important;
+  background: rgba(41, 182, 246, 0.15) !important;
+}
+
+.theme-salt #sleep-reminder {
+  color: #ef5350 !important;
+  background: rgba(239, 83, 80, 0.12) !important;
+}
+
+/* Peach Soda Theme */
+.theme-peach #sleep-countdown {
+  color: #cb6f8f !important;
+  background: rgba(203, 111, 143, 0.15) !important;
+}
+
+.theme-peach #sleep-reminder {
+  color: #ff5252 !important;
+  background: rgba(255, 82, 82, 0.12) !important;
+}
+
+/* Mint Breeze Theme */
+.theme-mint #sleep-countdown {
+  color: #43a047 !important;
+  background: rgba(67, 160, 71, 0.15) !important;
+}
+
+.theme-mint #sleep-reminder {
+  color: #d32f2f !important;
+  background: rgba(211, 47, 47, 0.12) !important;
+}
+
+/* ============================================
+   HABIT CHECKBOX & MATRIX STYLING
+   ============================================ */
+
+.habit-checkbox {
+  accent-color: var(--habit-checkbox-accent) !important;
+  cursor: pointer;
+}
+
+.matrix-do-first {
+  background: var(--matrix-do-first-bg) !important;
+}
+
+.matrix-do-first .matrix-task-title {
+  color: var(--matrix-do-first-text) !important;
+  font-weight: 600;
+}
+
+.matrix-schedule {
+  background: var(--matrix-schedule-bg) !important;
+}
+
+.matrix-schedule .matrix-task-title {
+  color: var(--matrix-schedule-text) !important;
+  font-weight: 600;
+}
+
+.matrix-delegate {
+  background: var(--matrix-delegate-bg) !important;
+}
+
+.matrix-delegate .matrix-task-title {
+  color: var(--matrix-delegate-text) !important;
+  font-weight: 600;
+}
+
+.matrix-eliminate {
+  background: var(--matrix-eliminate-bg) !important;
+}
+
+.matrix-eliminate .matrix-task-title {
+  color: var(--matrix-eliminate-text) !important;
+  font-weight: 600;
+}
+/* ============================================
+   THEME-SPECIFIC TODO-FORM STYLING
+   ============================================ */
+
+/* Morning Coffee Theme */
+.theme-morning-coffee #todo-form,
+body:not([class*="theme-"]) #todo-form {
+  background: linear-gradient(135deg, rgba(224, 122, 95, 0.12) 0%, rgba(129, 178, 154, 0.08) 100%) !important;
+  border: 2px solid rgba(224, 122, 95, 0.4) !important;
+}
+
+/* Deep Focus Theme */
+.theme-deep-focus #todo-form {
+  background: linear-gradient(135deg, rgba(203, 166, 247, 0.12) 0%, rgba(137, 180, 250, 0.08) 100%) !important;
+  border: 2px solid rgba(203, 166, 247, 0.4) !important;
+}
+
+/* Clean Slate Theme */
+.theme-clean-slate #todo-form {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(59, 130, 246, 0.06) 100%) !important;
+  border: 2px solid rgba(37, 99, 235, 0.35) !important;
+}
+
+/* Get It Done Theme */
+.theme-get-it-done #todo-form {
+  background: linear-gradient(135deg, rgba(255, 230, 0, 0.12) 0%, rgba(0, 210, 106, 0.08) 100%) !important;
+  border: 2px solid rgba(255, 230, 0, 0.35) !important;
+}
+
+/* Sugar Rush Theme */
+.theme-sugar #todo-form {
+  background: linear-gradient(135deg, rgba(255, 64, 129, 0.12) 0%, rgba(0, 210, 255, 0.08) 100%) !important;
+  border: 2px solid rgba(255, 64, 129, 0.35) !important;
+}
+
+/* Holo Y2K Theme */
+.theme-holo #todo-form {
+  background: linear-gradient(135deg, rgba(255, 0, 204, 0.12) 0%, rgba(0, 204, 255, 0.08) 100%) !important;
+  border: 2px solid rgba(255, 0, 204, 0.35) !important;
+}
+
+/* Sea Salt Blue Theme */
+.theme-salt #todo-form {
+  background: linear-gradient(135deg, rgba(41, 182, 246, 0.12) 0%, rgba(129, 212, 250, 0.08) 100%) !important;
+  border: 2px solid rgba(41, 182, 246, 0.35) !important;
+}
+
+/* Peach Soda Theme */
+.theme-peach #todo-form {
+  background: linear-gradient(135deg, rgba(255, 128, 171, 0.12) 0%, rgba(203, 111, 143, 0.08) 100%) !important;
+  border: 2px solid rgba(255, 128, 171, 0.35) !important;
+}
+
+/* Mint Breeze Theme */
+.theme-mint #todo-form {
+  background: linear-gradient(135deg, rgba(0, 230, 118, 0.12) 0%, rgba(102, 187, 106, 0.08) 100%) !important;
+  border: 2px solid rgba(0, 230, 118, 0.35) !important;
+}
